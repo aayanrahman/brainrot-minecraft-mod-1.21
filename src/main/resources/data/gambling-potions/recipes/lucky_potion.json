@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "WBW",
+    " G "
+  ],
+  "key": {
+    "G": { "item": "minecraft:gold_ingot" },
+    "W": { "item": "minecraft:potion", "nbt": "{Potion:\"minecraft:water\"}" },
+    "B": { "item": "minecraft:blaze_powder" }
+  },
+  "result": {
+    "item": "gambling-potions:lucky_potion"
+  }
+}

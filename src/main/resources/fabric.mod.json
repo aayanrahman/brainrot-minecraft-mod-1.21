@@ -17,12 +17,6 @@
 	"entrypoints": {
 		"main": [
 			"net.realjs.gambling.GamblingPotions"
-		],
-		"fabric-datagen": [
-			"net.realjs.gambling.GamblingPotionsDataGenerator"
-		],
-		"client": [
-			"net.realjs.gambling.GamblingPotionsClient"
 		]
 	},
 	"mixins": [
