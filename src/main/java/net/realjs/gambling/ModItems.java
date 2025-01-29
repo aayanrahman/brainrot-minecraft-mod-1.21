@@ -8,19 +8,22 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.potion.Potion;
+// Import the correct PotionUtil class
+import com.mojang.datafixers.util.Pair;
 
 public class ModItems {
     public static final Item LUCKY_POTION = registerItem("lucky_potion",
             new LuckyPotionItem(new Item.Settings().maxCount(16)));
 
     public static final Item BALKAN_RAGE_POTION = registerItem("balkan_rage_potion",
-            new BalkanRagePotionItem(new Item.Settings().maxCount(16)));  // Changed this line to use BalkanRagePotionItem
+            new BalkanRagePotionItem(new Item.Settings().maxCount(16)));
 
     public static final Item LOW_TAPER_FADE_HELMET = registerItem("low_taper_fade_helmet",
             new LowTaperFadeHelmet(ArmorMaterials.NETHERITE, new Item.Settings().maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, Identifier.of("gambling-potions", name), item);
+        return Registry.register(Registries.ITEM, Identifier.of(GamblingPotions.MOD_ID, name), item);
     }
 
     public static void registerItems() {
@@ -28,7 +31,7 @@ public class ModItems {
 
         // Register all items to creative mode inventory
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
-            entries.add(LUCKY_POTION);
+            entries.add(LUCKY_POTION); // Keep it simple, just add the items directly
             entries.add(BALKAN_RAGE_POTION);
         });
 

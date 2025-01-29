@@ -15,7 +15,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class FanumTax {
-    private static int taxTimer = 600; // 30 seconds instead of 5-10 minutes
+    private static int taxTimer = 6000; // 30 seconds instead of 5-10 minutes
 
     public static void register() {
         // Register a command to trigger Fanum Tax instantly
@@ -32,7 +32,7 @@ public class FanumTax {
             if (world instanceof ServerWorld serverWorld) { // Ensure it's ServerWorld
                 taxTimer--;
                 if (taxTimer <= 0) {
-                    taxTimer = 200; // Reset timer to 30 seconds
+                    taxTimer = 6000; // Reset timer to 30 seconds
                     applyTax(serverWorld);
                 }
             }
@@ -49,7 +49,7 @@ public class FanumTax {
                     .collect(Collectors.toList());
 
             if (validItems.isEmpty()) {
-                player.sendMessage(Text.literal("🤡 Fanum checked your inventory... You're broke!"), false);
+                player.sendMessage(Text.literal("Fanum checked your inventory... You're broke LMAO!"), false);
                 return; // No items to take
             }
 
@@ -59,7 +59,7 @@ public class FanumTax {
 
             // Extra check that we didn't pick "Air"
             if (stack.isEmpty() || stack.getItem() == net.minecraft.item.Items.AIR) {
-                player.sendMessage(Text.literal("🤡 Fanum checked your inventory but took nothing this time."), false);
+                player.sendMessage(Text.literal("Fanum checked your inventory but took nothing this time."), false);
                 System.out.println("[Fanum Tax] Skipped tax because no valid item was found.");
                 return;
             }
@@ -70,7 +70,7 @@ public class FanumTax {
 
             stack.decrement(amountToRemove);
 
-            player.sendMessage(Text.literal("💰 Fanum took " + amountToRemove + "x " + itemName + ". Pay your taxes."), false);
+            player.sendMessage(Text.literal("Fanum took " + amountToRemove + "x " + itemName + ". Pay your taxes."), false);
             System.out.println("[Fanum Tax] Took " + amountToRemove + "x " + itemName);
         }
     }

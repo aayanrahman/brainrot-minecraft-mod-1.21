@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:brewing",
+  "base": {
+    "item": "minecraft:awkward_potion"
+  },
+  "ingredient": {
+    "item": "minecraft:rabbit_foot"
+  },
+  "result": {
+    "item": "minecraft:potion",
+    "nbt": {
+      "Potion": "gambling-potions:lucky_potion"
+    }
+  }
+}
