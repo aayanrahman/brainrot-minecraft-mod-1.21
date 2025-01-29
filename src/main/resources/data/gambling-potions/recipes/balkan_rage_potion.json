@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:brewing",
+  "ingredient": "minecraft:nether_wart",
+  "base": "minecraft:awkward_potion",
+  "result": "gambling-potions:balkan_rage_potion"
+}

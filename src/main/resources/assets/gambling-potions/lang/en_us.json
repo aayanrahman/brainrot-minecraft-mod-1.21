@@ -1,4 +1,10 @@
 {
   "item.gambling-potions.lucky_potion": "Skibidi Potion",
-  "item.gambling-potions.lucky_potion.effect.empty": "Skibidi Potion"
+  "item.gambling-potions.lucky_potion.effect.empty": "Skibidi Potion",
+
+  "item.gambling-potions.balkan_rage_potion": "Balkan Rage Potion",
+  "item.gambling-potions.balkan_rage_potion.effect.empty": "Adrenaline + Balkan Rage",
+
+  "item.gambling-potions.low_taper_fade_helmet": "Low Taper Fade Helmet",
+  "item.gambling-potions.low_taper_fade_helmet.description": "Its crazy that this is massive"
 }

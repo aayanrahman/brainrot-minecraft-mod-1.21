@@ -32,7 +32,7 @@ public class FanumTax {
             if (world instanceof ServerWorld serverWorld) { // Ensure it's ServerWorld
                 taxTimer--;
                 if (taxTimer <= 0) {
-                    taxTimer = 600; // Reset timer to 30 seconds
+                    taxTimer = 200; // Reset timer to 30 seconds
                     applyTax(serverWorld);
                 }
             }
@@ -43,9 +43,9 @@ public class FanumTax {
         for (ServerPlayerEntity player : world.getPlayers()) {
             DefaultedList<ItemStack> inventory = player.getInventory().main;
 
-            // Filter non-empty stacks
+            // Get only valid (non-empty) items
             List<ItemStack> validItems = inventory.stream()
-                    .filter(stack -> stack != null && !stack.isEmpty()) // Ensure stack isn't null or empty
+                    .filter(stack -> stack != null && !stack.isEmpty() && stack.getItem() != net.minecraft.item.Items.AIR) // Double-check Air
                     .collect(Collectors.toList());
 
             if (validItems.isEmpty()) {
@@ -57,18 +57,21 @@ public class FanumTax {
             Collections.shuffle(validItems);
             ItemStack stack = validItems.get(0);
 
-            // Double-check that we picked a real item
+            // Extra check that we didn't pick "Air"
             if (stack.isEmpty() || stack.getItem() == net.minecraft.item.Items.AIR) {
                 player.sendMessage(Text.literal("🤡 Fanum checked your inventory but took nothing this time."), false);
+                System.out.println("[Fanum Tax] Skipped tax because no valid item was found.");
                 return;
             }
 
             // Take random amount (1-5) from the stack
             int amountToRemove = Math.min(stack.getCount(), 1 + new Random().nextInt(5));
+            String itemName = stack.getItem().getName().getString(); // Proper item name
+
             stack.decrement(amountToRemove);
 
-            player.sendMessage(Text.literal("💰 Fanum took " + amountToRemove + "x " + stack.getName().getString() + ". Pay your taxes."), false);
-            System.out.println("[Fanum Tax] Took " + amountToRemove + "x " + stack.getName().getString());
+            player.sendMessage(Text.literal("💰 Fanum took " + amountToRemove + "x " + itemName + ". Pay your taxes."), false);
+            System.out.println("[Fanum Tax] Took " + amountToRemove + "x " + itemName);
         }
     }
 }
